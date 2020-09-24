@@ -10,6 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/Wipie/LightShotGalleryDownloader-CLI.git"
   },
+ "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "keywords": [
     "lighshot",
     "gallery",

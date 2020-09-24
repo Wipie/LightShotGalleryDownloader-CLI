@@ -40,6 +40,7 @@ After installating dependcies, move the target.json file into the root of the pr
     ├── package.json        
     ├── index.js                    # LightshotGalleryDownloader-CLI
     ├── target.json                 # Your target.json
+    ├── LICENSE
     └── README.md
 
 Finally in a terminal run the program

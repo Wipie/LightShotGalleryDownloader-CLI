@@ -1,6 +1,6 @@
 /*
 Author: Wipie
-Version: 1.0.0
+Version: 1.0.1
 Project: LightShotGalleryDownloader-CLI
 */
 const request = require('request');
@@ -14,32 +14,31 @@ try {
 }
 
 async function extractScreenshots(file) {
-    console.log("Detected : " + file.result.total + " screenshots.");
     for(let i = 0; i < file.result.total; i++) {
-        wait(2000); // Pausing thread to avoid Prntscr's timeout
+        //wait(1000); // Pausing thread to avoid Prntscr's timeout
         let count = i + 1;
-        let remainingTime = (file.result.total - i) * 2;
-        console.log("Downloading screenshot #"+ count + " Estimated time remaining: " + convertTime(remainingTime));
-        await saveImage(file.result.screens[i].url, './images/' + file.result.screens[i].id36 + '.jpg');
+        let percent = (i / file.result.total) * 100;
+        console.clear();
+        console.log("===================================================");
+        console.log("=========LightShot Gallery Downloader CLI==========");
+        console.log("==============By Wipie=============================");
+        console.log("===================================================");
+        console.log("Downloading screenshot ID: " + file.result.screens[i].id36 + " (#" + count + ").");
+        //console.log("Downloading screenshot #"+ count + "/" + file.result.total + " (" + (Math.round(percent * 100) / 100).toFixed(2) + "%) done.");
+        console.log("===================================================");
+        console.log("Total: " + count + "/" + file.result.total + " Progression: " + (Math.round(percent * 100) / 100).toFixed(2) + "% done.")
+        let fileDate = file.result.screens[i].date.replace(' ', '_').replace(':', 'h').replace(':', 'm');
+        await saveImage(file.result.screens[i].url, './images/' + fileDate + "s.jpg");
     }
-	console.log("Download complete. All screenhots are now in ./images/");
+    console.log("Download complete. All screenhots are now in ./images/");
 }
 
 function wait(ms){
-	var start = new Date().getTime();
-	var end = start;
-	while(end < start + ms) {
-		end = new Date().getTime();
-	}
-}
-
-function convertTime(sec) {
-    var sec_num = parseInt(sec, 10);
-    var hours   = Math.floor(sec_num / 3600);
-    var minutes = Math.floor(sec_num / 60) % 60;
-    var seconds = sec_num % 60;
-
-    return [hours,minutes,seconds].map(v => v < 10 ? "0" + v : v).filter((v,i) => v !== "00" || i > 0).join(":")
+    var start = new Date().getTime();
+    var end = start;
+    while(end < start + ms) {
+        end = new Date().getTime();
+    }
 }
 
 async function saveImage(url, dest) {
@@ -49,10 +48,10 @@ async function saveImage(url, dest) {
         uri: url,
         gzip: true,
       })
-		  .pipe(file)
-		  .on('finish', async () => {
-			resolve();
-		  })
+          .pipe(file)
+          .on('finish', async () => {
+            resolve();
+          })
           .on('error', (error) => {
             reject(error);
           });

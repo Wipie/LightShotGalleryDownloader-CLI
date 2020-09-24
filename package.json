@@ -1,0 +1,31 @@
+{
+  "name": "lightshot-gallery-downloader-cli",
+  "version": "1.0.0",
+  "description": "A small Node.JS program to download your LightShot(Prntscr.com) Gallery",
+  "main": "index.js",
+  "scripts": {
+    "test": "node ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Wipie/LightShotGalleryDownloader-CLI.git"
+  },
+  "keywords": [
+    "lighshot",
+    "gallery",
+    "downloader",
+    "cli",
+    "virtanel",
+    "printscr"
+  ],
+  "author": "Wipie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Wipie/LightShotGalleryDownloader-CLI/issues"
+  },
+  "homepage": "https://github.com/Wipie/LightShotGalleryDownloader-CLI#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "request": "^2.88.2"
+  }
+}

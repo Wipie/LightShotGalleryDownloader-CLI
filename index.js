@@ -56,15 +56,6 @@ function wait(ms){
     }
 }
 
-function convertTime(sec) {
-  var sec_num = parseInt(sec, 10);
-  var hours   = Math.floor(sec_num / 3600);
-  var minutes = Math.floor(sec_num / 60) % 60;
-  var seconds = sec_num % 60;
-
-  return [hours,minutes,seconds].map(v => v < 10 ? "0" + v : v).filter((v,i) => v !== "00" || i > 0).join(":")
-}
-
 async function saveImage(url, dest) {
     const file = fs.createWriteStream(dest);
     await new Promise((resolve, reject) => {

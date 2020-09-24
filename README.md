@@ -54,6 +54,46 @@ curl 'https://api.prntscr.com/v1/' \
 ```
 Note: This request will only retrieve your last 10.000 screenshots.
 
+#### Step 1.3: Performing the request
+To perform the above requeste you must have a terminal capable of using cURL. Powershell can work but unless there is lot of demand I won't explain how to proceed
+<table>
+  <tr>
+    <td>OS</td>
+    <td>Terminal</td>
+    <td>Support</td>
+    <td>Working</td>
+    <td>Using cURL</td>
+  </tr>
+  <tr>
+    <td rowspan=2>Windows</td>
+    <td>PowerShell</td>
+    <td>:x:</td>
+    <td>Likely Yes (Untested)</td>
+    <td>:x:</td>
+  </tr>
+  <tr>
+    <td>Git Bash</td>
+    <td>:heavy_check_mark:</td>
+    <td>:heavy_check_mark:</td>
+    <td>:heavy_check_mark:</td>
+  </tr>
+  <tr>
+    <td>Linux</td>
+    <td>Bash Terminal</td>
+    <td>:heavy_check_mark:</td>
+    <td>:heavy_check_mark:</td>
+    <td>:heavy_check_mark:</td>
+  </tr>
+  <tr>
+    <td>MacOS</td>
+    <td>Terminal</td>
+    <td>:heavy_check_mark:</td>
+    <td>:heavy_check_mark:</td>
+    <td>:heavy_check_mark:</td>
+  </tr>
+</table>
+    
+
 ### Step 2: Cloning the repository
 Once you have your target.json file, clone or download LighshotGalleryDownloaded-CLI.
 ```bash

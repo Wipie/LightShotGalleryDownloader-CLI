@@ -55,7 +55,7 @@ Then get into the root repository and open a terminal to install node depedencie
 npm install
 ```
 
-After installating dependcies, move the target.json file into the root of the program your folder should look like this
+After installating depedencies, move the target.json file into the root of the program your folder should look like this
 
     .
     ├── node_modules                

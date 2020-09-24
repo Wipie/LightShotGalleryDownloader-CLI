@@ -1,10 +1,25 @@
 /*
 Author: Wipie
-Version: 1.0.1
+Version: 1.0.2
 Project: LightShotGalleryDownloader-CLI
 */
 const request = require('request');
 const fs = require('fs');
+const cliProgress = require('cli-progress');
+const _colors = require('colors');
+
+const pBar = new cliProgress.SingleBar({
+  format: 'Downloading ID:{id} - Total: {value}/{total}({percentage}%) |' + _colors.green('{bar}') + '| Elapsed: {duration_formatted} - Duration: {eta_formatted}',
+  barCompleteChar: '\u2588',
+  barIncompleteChar: '\u2591',
+  hideCursor: false,
+  forceRedraw: false,
+  synchronousUpdate: true,
+  etaAsynchronousUpdate: false,
+  etaBuffer: 1000,
+  linewrap: true,
+  fps: 100,
+}, cliProgress.Presets.shades_classic);
 
 try {
     let jsonFile = require("./target.json");
@@ -14,22 +29,23 @@ try {
 }
 
 async function extractScreenshots(file) {
-    for(let i = 0; i < file.result.total; i++) {
-        //wait(1000); // Pausing thread to avoid Prntscr's timeout
-        let count = i + 1;
-        let percent = (i / file.result.total) * 100;
-        console.clear();
-        console.log("===================================================");
-        console.log("=========LightShot Gallery Downloader CLI==========");
-        console.log("==============By Wipie=============================");
-        console.log("===================================================");
-        console.log("Downloading screenshot ID: " + file.result.screens[i].id36 + " (#" + count + ").");
-        console.log("===================================================");
-        console.log("Total: " + count + "/" + file.result.total + " Progression: " + (Math.round(percent * 100) / 100).toFixed(2) + "% done.")
-        let fileDate = file.result.screens[i].date.replace(' ', '_').replace(':', 'h').replace(':', 'm');
-        await saveImage(file.result.screens[i].url, './images/' + fileDate + "s.jpg");
+  console.log("===================================================");
+  console.log("=========LightShot Gallery Downloader CLI==========");
+  console.log("==============By Wipie=============================");
+  console.log("===================================================");
+  pBar.start(file.result.total, 0);
+  for(let i = 0; i < file.result.total; i++) {
+      //wait(1000); // Pausing thread to avoid Prntscr's timeout
+      pBar.increment();
+      pBar.updateETA()
+      pBar.update(i, {
+        id: file.result.screens[i].id36
+      });
+      let fileDate = file.result.screens[i].date.replace(' ', '_').replace(':', 'h').replace(':', 'm');
+      await saveImage(file.result.screens[i].url, './images/' + fileDate + "s.jpg");
     }
-    console.log("Download complete. All screenhots are now in ./images/");
+    pBar.stop();
+    console.log("Download completed. All screenshots are now in ./images/");
 }
 
 function wait(ms){
@@ -38,6 +54,15 @@ function wait(ms){
     while(end < start + ms) {
         end = new Date().getTime();
     }
+}
+
+function convertTime(sec) {
+  var sec_num = parseInt(sec, 10);
+  var hours   = Math.floor(sec_num / 3600);
+  var minutes = Math.floor(sec_num / 60) % 60;
+  var seconds = sec_num % 60;
+
+  return [hours,minutes,seconds].map(v => v < 10 ? "0" + v : v).filter((v,i) => v !== "00" || i > 0).join(":")
 }
 
 async function saveImage(url, dest) {

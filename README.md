@@ -71,4 +71,9 @@ Finally in a terminal run the program
 ```bash
 node .
 ```
-Let it run depending on how much screenshots there is it might take a LONG time. I had to pause thread every download to avoid LightShot's auto timeout.
+Let it run depending on how much screenshots there is it might take a LONG time.
+
+
+## Troubleshooting
+
+If during download you are getting error while downloading, navigate inside index.js and uncomment Line 18, wipe the /images/ folder and try again. It will take longer but you won't be timed out by prntscr.com

@@ -24,7 +24,6 @@ async function extractScreenshots(file) {
         console.log("==============By Wipie=============================");
         console.log("===================================================");
         console.log("Downloading screenshot ID: " + file.result.screens[i].id36 + " (#" + count + ").");
-        //console.log("Downloading screenshot #"+ count + "/" + file.result.total + " (" + (Math.round(percent * 100) / 100).toFixed(2) + "%) done.");
         console.log("===================================================");
         console.log("Total: " + count + "/" + file.result.total + " Progression: " + (Math.round(percent * 100) / 100).toFixed(2) + "% done.")
         let fileDate = file.result.screens[i].date.replace(' ', '_').replace(':', 'h').replace(':', 'm');

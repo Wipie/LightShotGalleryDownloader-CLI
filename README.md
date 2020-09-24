@@ -16,12 +16,9 @@ Prior to use this program you will need to download your gallery information int
 To generate the target.json you can perform a cURL request like the one below
 Note: The file will be generated in the folder your terminal is currently in!
 
-Just replace the cookies and data-binary in the request below
-
-### Edit
+### Edit the request with your own cookie
 ```bash
--H 'cookie: <YOUR COOKIES>
---data-binary '{"jsonrpc":"2.0","method":"get_user_screens","id":1,"params":{"start_id36":"<YOUR LAST SCREENSHOT ID>","count":10000}}'
+-H 'cookie: __auth=<YOUR COOKIES>'
 ```
 Note: This request will only retrieve your last 10.000 screenshots.
 ### Request
@@ -39,8 +36,8 @@ curl 'https://api.prntscr.com/v1/' \
   -H 'sec-fetch-dest: empty' \
   -H 'referer: https://prntscr.com/gallery.html' \
   -H 'accept-language: fr-CA,fr;q=0.9,fr-FR;q=0.8,en-US;q=0.7,en;q=0.6,it;q=0.5,ru;q=0.4' \
-  -H 'cookie: <YOUR COOKIES>' \
-  --data-binary '{"jsonrpc":"2.0","method":"get_user_screens","id":1,"params":{"start_id36":"<YOUR LAST SCREENSHOT ID>","count":10000}}' \
+  -H 'cookie: __auth=<YOUR COOKIES>' \
+  --data-binary '{"jsonrpc":"2.0","method":"get_user_screens","id":1,"params":{"count":10000}}' \
   --compressed > target.json
 ```
 

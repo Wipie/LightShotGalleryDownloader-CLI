@@ -16,7 +16,7 @@ Prior to use this program you will need to download your gallery information int
 To generate the target.json you can perform a cURL request like the one below
 Note: The file will be generated in the folder your terminal is currently in!
 
-### Edit the request with your own cookie
+### Edit the request with your own __auth cookie
 ```bash
 -H 'cookie: __auth=<YOUR COOKIES>'
 ```

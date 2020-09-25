@@ -24,7 +24,7 @@ Note: The file will be generated in the folder your terminal is currently in!
 #### Step 1.1: Getting your __auth cookie
 | Browser |Action|
 |---------|---|
-|Firefox|Step 1: <kbd>Shift</kbd>+<kbd>F9</kbd> <br> Step 2: Click on `Cookies` option on left"<br>Step 3: Select the cookie provider: `https://prntscr.com/`<r>Step 4: Copy the value associated to `__auth`|
+|Firefox|Step 1: <kbd>Shift</kbd>+<kbd>F9</kbd> <br> Step 2: Click on `Cookies` option on left"<br>Step 3: Select the cookie provider: `https://prntscr.com/`<br>Step 4: Copy the value associated to `__auth`|
 |Chrome|Step 1: <kbd>F12</kbd><br>Step 2: Click on `Application` at the top<br>Step 3: Click on `Cookies` option on left<br>Step 4: Select the cookie provider: `https://prntscr.com/`<br>Step 5: Copy the value associated to `__auth`|
 
 #### Step 1.2: Preparing the request

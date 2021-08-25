@@ -23,18 +23,19 @@ const pBar = new cliProgress.SingleBar({
 
 try {
     let jsonFile = require("./target.json");
-    extractScreenshots(jsonFile);
+    var args = process.argv.slice(2)
+    extractScreenshots(jsonFile, args[0]);
 } catch (error) {
     console.log("An error occured while trying to open JSON file. More: " + error);
 }
 
-async function extractScreenshots(file) {
+async function extractScreenshots(file, start = 0) {
   console.log("===================================================");
   console.log("=========LightShot Gallery Downloader CLI==========");
   console.log("==============By Wipie=============================");
   console.log("===================================================");
   pBar.start(file.result.total, 0);
-  for(let i = 0; i < file.result.total; i++) {
+  for(let i = start; i < file.result.total; i++) {
       //wait(1000); // Pausing thread to avoid Prntscr's timeout
       pBar.increment();
       pBar.updateETA()

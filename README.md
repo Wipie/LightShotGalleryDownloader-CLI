@@ -123,6 +123,12 @@ Finally in a terminal run the program
 ```bash
 node .
 ```
+
+If you want to start at a specific index or resume where you were you can use the following
+```bash
+node . <number> e.g node . 100 Will start at 100 
+```
+
 Let it run depending on how much screenshots there is it might take a LONG time.
 
 
